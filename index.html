@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2A1F15">
+<title>Sweet &amp; Sip — Poussez la petite porte</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Karla:wght@400;500;600;700&display=swap">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --brown:#5C3A1E;
+  --brown-deep:#3E2612;
+  --fuchsia:#C2185B;
+  --fuchsia-deep:#8E0E3F;
+  --fuchsia-soft:#F4D7E0;
+  --matcha:#7B9B5E;
+  --matcha-deep:#5A7543;
+  --matcha-soft:#E2EBD3;
+  --gold:#B08D57;
+  --gold-light:#D4AF77;
+  --parchment:#F8F1E0;
+  --parchment-deep:#EFE4CD;
+  --cream:#FDF9F2;
+  --ink:#2A1F15;
+  --ink-soft:#6B5A4A;
+  --line:#EADCC8;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Karla',-apple-system,sans-serif;
+}
+
+html,body{height:100%}
+body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--parchment);
+  min-height:100vh;
+  min-height:100dvh;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding:32px 20px 48px;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* Texture parchemin subtile */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(176,141,87,.07) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(194,24,91,.04) 0%, transparent 45%),
+    radial-gradient(circle at 50% 100%, rgba(123,155,94,.05) 0%, transparent 40%);
+  pointer-events:none;
+  z-index:0;
+}
+
+/* ═══════ CADRE PRINCIPAL ═══════ */
+.pays{
+  width:100%;
+  max-width:640px;
+  position:relative;
+  z-index:1;
+  animation:fadeUp 1s ease both;
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.bandeau{
+  text-align:center;
+  color:var(--gold);
+  font-size:14px;
+  letter-spacing:.6em;
+  margin-bottom:18px;
+  opacity:.65;
+  font-family:var(--serif);
+}
+.bandeau .fleur{
+  display:inline-block;
+  margin:0 4px;
+  transition:transform .6s;
+}
+.pays:hover .bandeau .fleur{ transform:rotate(180deg) }
+
+.seuil{
+  background:var(--cream);
+  border-radius:22px;
+  padding:38px 32px 34px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.6) inset,
+    0 30px 80px rgba(62,38,18,.10),
+    0 10px 24px rgba(62,38,18,.06);
+  border:1px solid var(--line);
+  position:relative;
+  overflow:hidden;
+}
+.seuil::before{
+  content:"";
+  position:absolute;
+  inset:10px;
+  border:1px solid rgba(176,141,87,.35);
+  border-radius:14px;
+  pointer-events:none;
+}
+.seuil::after{
+  content:"✦";
+  position:absolute;
+  top:16px;left:50%;
+  transform:translateX(-50%);
+  color:var(--gold);
+  font-size:11px;
+  background:var(--cream);
+  padding:0 12px;
+  letter-spacing:.4em;
+}
+
+/* Marque */
+.marque{
+  display:flex;
+  align-items:baseline;
+  justify-content:center;
+  gap:8px;
+  line-height:1;
+  margin-top:8px;
+}
+.marque .v,.marque .p{
+  font-family:var(--serif);
+  font-size:38px;
+  font-weight:600;
+  letter-spacing:.18em;
+  background:linear-gradient(180deg, var(--brown-deep) 0%, var(--brown) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.marque .amp{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:34px;
+  font-weight:500;
+  margin:0 2px;
+  background:linear-gradient(180deg, var(--fuchsia) 0%, var(--fuchsia-deep) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.regle{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin-top:10px;
+}
+.regle .l{
+  height:1px;
+  width:30px;
+  background:linear-gradient(90deg, transparent, var(--gold));
+}
+.regle .l:last-child{
+  background:linear-gradient(90deg, var(--gold), transparent);
+}
+.regle .d{
+  width:5px;height:5px;
+  background:var(--fuchsia);
+  border-radius:50%;
+  position:relative;
+}
+.regle .d::after{
+  content:"";
+  position:absolute;
+  inset:-4px;
+  border:1px solid var(--gold);
+  border-radius:50%;
+  opacity:.5;
+}
+
+.sous-titre{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:14px;
+  color:var(--ink-soft);
+  text-align:center;
+  margin-top:12px;
+  letter-spacing:.02em;
+}
+
+/* ═══════ VERS D'INTRODUCTION ═══════ */
+.vers{
+  font-family:var(--serif);
+  font-size:19px;
+  line-height:1.75;
+  text-align:center;
+  color:var(--brown-deep);
+  margin:32px auto 24px;
+  max-width:480px;
+  font-style:italic;
+  position:relative;
+  padding:0 10px;
+}
+.vers em{
+  color:var(--fuchsia);
+  font-style:italic;
+  font-weight:500;
+}
+.vers .mot{
+  display:inline-block;
+  position:relative;
+  padding:0 2px;
+}
+.vers .mot::after{
+  content:"";
+  position:absolute;
+  bottom:2px;left:0;right:0;
+  height:1px;
+  background:var(--gold);
+  opacity:.4;
+}
+
+/* ═══════════════════════════════════════════════
+   ✦ LA BARRE DE RECHERCHE ORNEMENTALE ✦
+   ═══════════════════════════════════════════════ */
+.quete{
+  position:relative;
+  margin:0 auto 34px;
+  max-width:520px;
+  animation:quete-apparait 1.2s ease both;
+}
+@keyframes quete-apparait{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* Petite légende au-dessus */
+.quete-legende{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  margin-bottom:14px;
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:13px;
+  color:var(--gold);
+  letter-spacing:.05em;
+}
+.quete-legende .trait{
+  flex:1;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity:.4;
+  max-width:60px;
+}
+.quete-legende .fleuronne{
+  color:var(--gold);
+  font-size:11px;
+  letter-spacing:.3em;
+}
+
+/* Le cadre principal de la recherche */
+.quete-cadre{
+  position:relative;
+  background:linear-gradient(180deg, #FFFEFB 0%, var(--parchment-deep) 100%);
+  border-radius:999px;
+  padding:4px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.9) inset,
+    0 8px 20px rgba(62,38,18,.08),
+    0 2px 6px rgba(62,38,18,.05);
+  transition:box-shadow .35s, transform .35s;
+}
+.quete-cadre::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:999px;
+  border:1px solid var(--gold);
+  opacity:.4;
+  pointer-events:none;
+  transition:opacity .35s;
+}
+.quete-cadre::after{
+  content:"";
+  position:absolute;
+  inset:4px;
+  border-radius:999px;
+  border:1px solid rgba(176,141,87,.25);
+  pointer-events:none;
+}
+
+/* État focus */
+.quete.ouvert .quete-cadre{
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.9) inset,
+    0 12px 32px rgba(194,24,91,.12),
+    0 4px 12px rgba(62,38,18,.08);
+  transform:translateY(-1px);
+}
+.quete.ouvert .quete-cadre::before{
+  opacity:.85;
+}
+
+/* Le champ */
+.quete-champ{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:0 18px 0 22px;
+  height:56px;
+  position:relative;
+  z-index:1;
+}
+
+/* Emblème à gauche (clé à la place du glass) */
+.quete-cle{
+  font-size:18px;
+  color:var(--gold);
+  flex-shrink:0;
+  transition:transform .5s cubic-bezier(.2,.7,.3,1);
+  line-height:1;
+}
+.quete.ouvert .quete-cle{
+  transform:rotate(-15deg) scale(1.05);
+}
+
+/* Input */
+.quete input{
+  flex:1;
+  border:none;
+  background:transparent;
+  outline:none;
+  font-family:var(--serif);
+  font-size:17px;
+  color:var(--brown-deep);
+  letter-spacing:.01em;
+  padding:0;
+  min-width:0;
+}
+.quete input::placeholder{
+  color:var(--gold);
+  font-style:italic;
+  opacity:.75;
+}
+
+/* Compteur / effacer à droite */
+.quete-fin{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-shrink:0;
+}
+.quete-compteur{
+  font-family:var(--sans);
+  font-size:9.5px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--gold);
+  opacity:0;
+  transition:opacity .3s;
+  white-space:nowrap;
+}
+.quete.ouvert .quete-compteur{
+  opacity:.85;
+}
+.quete-effacer{
+  width:26px;height:26px;
+  border-radius:50%;
+  border:none;
+  background:transparent;
+  color:var(--gold);
+  cursor:pointer;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  font-size:16px;
+  padding:0;
+  transition:background .2s;
+}
+.quete-effacer:hover{
+  background:rgba(176,141,87,.12);
+}
+.quete.rempli .quete-effacer{
+  display:flex;
+}
+
+/* Petite poussière dorée qui flotte au focus */
+.quete-poussiere{
+  position:absolute;
+  top:50%;left:50%;
+  width:0;height:0;
+  pointer-events:none;
+  z-index:0;
+}
+.quete-poussiere span{
+  position:absolute;
+  color:var(--gold);
+  font-size:10px;
+  opacity:0;
+  animation:poussiere 1.6s ease-out forwards;
+}
+@keyframes poussiere{
+  0%{ opacity:0; transform:translate(0,0) scale(.6) }
+  20%{ opacity:.9 }
+  100%{ opacity:0; transform:translate(var(--dx), var(--dy)) scale(1.1) rotate(180deg) }
+}
+
+/* ═══════ RÉSULTATS ═══════ */
+.quete-resultats{
+  margin-top:20px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .4s ease;
+}
+.quete-resultats.ouvert{
+  max-height:520px;
+  overflow-y:auto;
+}
+
+.resultat{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:14px 18px;
+  border-radius:14px;
+  background:linear-gradient(135deg, #FFFEFB 0%, var(--cream) 100%);
+  border:1px solid var(--line);
+  text-decoration:none;
+  color:inherit;
+  cursor:pointer;
+  text-align:left;
+  font-family:inherit;
+  transition:transform .2s, box-shadow .2s, border-color .2s;
+  animation:resultat-apparait .3s ease both;
+  position:relative;
+  overflow:hidden;
+}
+@keyframes resultat-apparait{
+  from{ opacity:0; transform:translateY(6px) }
+  to{ opacity:1; transform:translateY(0) }
+}
+.resultat:hover{
+  transform:translateX(3px);
+  border-color:var(--gold);
+  box-shadow:0 6px 20px rgba(62,38,18,.08);
+}
+.resultat::before{
+  content:"";
+  position:absolute;
+  left:0;top:0;bottom:0;
+  width:3px;
+  border-radius:3px 0 0 3px;
+}
+.resultat.verger::before{ background:var(--fuchsia) }
+.resultat.atelier::before{ background:var(--matcha) }
+
+.resultat-embleme{
+  font-size:18px;
+  flex-shrink:0;
+  width:24px;
+  text-align:center;
+  opacity:.7;
+}
+.resultat-corps{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  min-width:0;
+}
+.resultat-nom{
+  font-family:var(--serif);
+  font-size:16.5px;
+  font-weight:600;
+  color:var(--brown-deep);
+  line-height:1.25;
+}
+.resultat-meta{
+  font-size:9.5px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  font-weight:600;
+  color:var(--gold);
+}
+.resultat.verger .resultat-meta{ color:var(--fuchsia-deep) }
+.resultat.atelier .resultat-meta{ color:var(--matcha-deep) }
+
+.resultat-fleche{
+  color:var(--gold);
+  font-size:14px;
+  flex-shrink:0;
+  opacity:.6;
+  transition:transform .25s, opacity .25s;
+}
+.resultat:hover .resultat-fleche{
+  opacity:1;
+  transform:translateX(3px);
+}
+
+/* Message aucun résultat */
+.quete-vide{
+  text-align:center;
+  padding:34px 20px 26px;
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:15px;
+  color:var(--ink-soft);
+  line-height:1.7;
+  animation:resultat-apparait .3s ease both;
+}
+.quete-vide .fleuronne{
+  display:block;
+  color:var(--gold);
+  font-size:14px;
+  letter-spacing:.5em;
+  margin-bottom:14px;
+  opacity:.7;
+}
+
+/* ═══════ ORNEMENT DE SÉPARATION ═══════ */
+.ou-bien{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  margin:34px 0 30px;
+  color:var(--gold);
+  font-size:14px;
+}
+.ou-bien .trait{
+  flex:1;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity:.5;
+  max-width:80px;
+}
+.ou-bien .fleuronne{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:13px;
+  color:var(--gold);
+  letter-spacing:.15em;
+  opacity:.75;
+}
+
+/* ═══════ LES DEUX PORTES ═══════ */
+.portes{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.porte{
+  display:flex;
+  flex-direction:column;
+  text-decoration:none;
+  color:inherit;
+  border-radius:110px 110px 16px 16px;
+  background:var(--cream);
+  border:1px solid var(--line);
+  overflow:hidden;
+  text-align:center;
+  padding:40px 22px 26px;
+  position:relative;
+  cursor:pointer;
+  transition:transform .35s cubic-bezier(.2,.7,.3,1), box-shadow .35s;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.8) inset,
+    0 4px 14px rgba(62,38,18,.06);
+}
+.porte:hover{
+  transform:translateY(-4px);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.8) inset,
+    0 20px 44px rgba(62,38,18,.14);
+}
+.porte::before{
+  content:"";
+  position:absolute;
+  top:10px;left:10px;right:10px;bottom:10px;
+  border:1px solid rgba(176,141,87,.35);
+  border-radius:100px 100px 10px 10px;
+  pointer-events:none;
+}
+
+.porte-embleme{
+  font-size:34px;
+  line-height:1;
+  margin-bottom:14px;
+  position:relative;
+  z-index:1;
+  transition:transform .5s cubic-bezier(.2,.7,.3,1);
+  filter:drop-shadow(0 4px 8px rgba(62,38,18,.10));
+}
+.porte:hover .porte-embleme{ transform:scale(1.08) translateY(-2px) }
+
+.porte-nom{
+  font-family:var(--serif);
+  font-size:26px;
+  font-weight:600;
+  line-height:1.05;
+  color:var(--brown-deep);
+  position:relative;
+  z-index:1;
+}
+
+.porte-trait{
+  width:32px;
+  height:1px;
+  background:var(--gold);
+  margin:12px auto 14px;
+  opacity:.65;
+}
+
+.porte-desc{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:13px;
+  line-height:1.6;
+  color:var(--ink-soft);
+  position:relative;
+  z-index:1;
+  padding:0 4px;
+  flex:1;
+}
+
+.porte-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  justify-content:center;
+  margin-top:16px;
+  position:relative;
+  z-index:1;
+}
+.porte-badge{
+  font-family:var(--sans);
+  font-size:9px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  padding:3px 9px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  color:var(--ink-soft);
+  background:var(--parchment);
+}
+
+.porte-invite{
+  margin-top:18px;
+  font-family:var(--sans);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--fuchsia);
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  position:relative;
+  z-index:1;
+}
+.porte-invite::after{
+  content:"→";
+  font-family:var(--serif);
+  font-size:14px;
+  font-weight:400;
+  transition:transform .3s;
+}
+.porte:hover .porte-invite::after{ transform:translateX(4px) }
+
+.porte-1 .porte-embleme{ color:var(--fuchsia) }
+.porte-1 .porte-invite{ color:var(--fuchsia) }
+.porte-2 .porte-embleme{ color:var(--matcha-deep) }
+.porte-2 .porte-invite{ color:var(--matcha-deep) }
+
+.porte::after{
+  content:"";
+  position:absolute;
+  top:22px;right:22px;
+  width:12px;height:12px;
+  border-radius:50%;
+  opacity:.5;
+  transition:opacity .3s, transform .6s;
+}
+.porte-1::after{ background:radial-gradient(circle at 35% 35%, var(--fuchsia-soft), var(--fuchsia)) }
+.porte-2::after{ background:radial-gradient(circle at 35% 35%, var(--matcha-soft), var(--matcha)) }
+.porte:hover::after{ opacity:1; transform:scale(1.15) }
+
+/* ═══════ SIGNATURE ═══════ */
+.signature{
+  text-align:center;
+  margin-top:34px;
+  padding-top:24px;
+  position:relative;
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:13px;
+  color:var(--ink-soft);
+}
+.signature::before{
+  content:"";
+  position:absolute;
+  top:0;left:50%;
+  transform:translateX(-50%);
+  width:80px;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.signature .fleur-finale{
+  display:inline-block;
+  color:var(--gold);
+  margin:0 8px;
+  font-size:11px;
+  letter-spacing:.4em;
+}
+
+/* ═══════ ÉTOILES FLOTTANTES ═══════ */
+.etoile{
+  position:fixed;
+  color:var(--gold);
+  font-size:9px;
+  opacity:.35;
+  pointer-events:none;
+  animation:flotter 9s ease-in-out infinite;
+  z-index:0;
+}
+.etoile.e1{ top:12%;left:8%;animation-delay:0s }
+.etoile.e2{ top:22%;right:10%;animation-delay:-2s;font-size:7px;opacity:.28 }
+.etoile.e3{ top:68%;left:6%;animation-delay:-4s;font-size:11px;opacity:.30 }
+.etoile.e4{ bottom:14%;right:12%;animation-delay:-6s;font-size:8px;opacity:.33 }
+.etoile.e5{ top:48%;left:14%;animation-delay:-3s;font-size:6px;opacity:.25 }
+.etoile.e6{ top:60%;right:6%;animation-delay:-7s;font-size:9px;opacity:.28 }
+@keyframes flotter{
+  0%,100%{ transform:translateY(0) rotate(0) }
+  50%{ transform:translateY(-10px) rotate(180deg) }
+}
+
+.petale{
+  position:fixed;
+  font-size:14px;
+  opacity:.22;
+  pointer-events:none;
+  z-index:0;
+  animation:deriver 40s linear infinite;
+}
+@keyframes deriver{
+  0%{ transform:translateX(-10vw) translateY(0) rotate(0) }
+  100%{ transform:translateX(110vw) translateY(-30px) rotate(360deg) }
+}
+
+/* ═══════ RESPONSIVE ═══════ */
+@media (max-width:600px){
+  body{ padding:20px 14px 32px }
+  .seuil{ padding:30px 22px 28px; border-radius:18px }
+  .marque .v,.marque .p{ font-size:30px; letter-spacing:.14em }
+  .marque .amp{ font-size:27px }
+  .vers{ font-size:17px; margin:26px auto 20px }
+  .quete{ margin-bottom:28px }
+  .quete-champ{ height:52px; padding:0 14px 0 18px; gap:10px }
+  .quete input{ font-size:15.5px }
+  .quete-compteur{ display:none }
+  .portes{ grid-template-columns:1fr; gap:14px }
+  .porte{
+    border-radius:80px 80px 14px 14px;
+    padding:32px 20px 22px;
+    flex-direction:row;
+    text-align:left;
+    align-items:center;
+    gap:18px;
+  }
+  .porte::before{ border-radius:70px 70px 8px 8px }
+  .porte-embleme{ font-size:38px; margin:0; flex-shrink:0 }
+  .porte-corps{ flex:1; min-width:0 }
+  .porte-nom{ font-size:22px }
+  .porte-trait{ margin:8px 0 10px }
+  .porte-desc{ padding:0 }
+  .porte-meta{ justify-content:flex-start; margin-top:12px }
+  .porte-invite{ margin-top:12px }
+  .porte::after{ top:16px; right:16px }
+  .bandeau{ font-size:11px; letter-spacing:.4em }
+}
+
+@media (min-width:1200px){
+  .pays{ max-width:720px }
+  .seuil{ padding:46px 42px 40px }
+  .marque .v,.marque .p{ font-size:44px }
+  .marque .amp{ font-size:40px }
+  .porte-nom{ font-size:28px }
+}
+
+.porte:focus-visible,
+.resultat:focus-visible{
+  outline:2px solid var(--fuchsia);
+  outline-offset:3px;
+}
+.porte-2:focus-visible{ outline-color:var(--matcha-deep) }
+
+/* Mode sombre */
+@media (prefers-color-scheme: dark){
+  :root{
+    --parchment:#1A1410;
+    --parchment-deep:#221A14;
+    --cream:#241C15;
+    --brown:#D4A574;
+    --brown-deep:#F0DDBE;
+    --fuchsia:#E91E63;
+    --fuchsia-deep:#F48FB1;
+    --fuchsia-soft:#3D1A2A;
+    --matcha:#A8C686;
+    --matcha-deep:#C5DBA0;
+    --matcha-soft:#1E2818;
+    --gold:#D4AF77;
+    --ink:#EFE6D6;
+    --ink-soft:#B8A890;
+    --line:#3D3228;
+  }
+  body{ background:#0F0B08 }
+  body::before{ opacity:.6 }
+  .seuil{ box-shadow:0 30px 80px rgba(0,0,0,.4) }
+  .porte-badge{ background:#1A1410 }
+  .porte{ box-shadow:0 4px 14px rgba(0,0,0,.3) }
+  .porte:hover{ box-shadow:0 20px 44px rgba(0,0,0,.5) }
+  .quete-cadre{ background:linear-gradient(180deg, #2A2018 0%, #1F1712 100%) }
+  .resultat{ background:linear-gradient(135deg, #2A2018 0%, #221A14 100%) }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+  }
+}
+</style>
+<!-- PWA -->
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" type="image/svg+xml" href="./icon.svg">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<meta name="theme-color" content="#1B3A2F">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Sweet &amp; Sip">
+</head>
+<body>
+
+<!-- Petites étoiles flottantes -->
+<span class="etoile e1">✦</span>
+<span class="etoile e2">✧</span>
+<span class="etoile e3">✦</span>
+<span class="etoile e4">✧</span>
+<span class="etoile e5">✦</span>
+<span class="etoile e6">✧</span>
+
+<!-- Pétale qui dérive -->
+<span class="petale" style="top:28%">✿</span>
+
+<div class="pays">
+
+  <!-- Bandeau décoratif -->
+  <div class="bandeau">
+    <span class="fleur">❦</span>
+    <span class="fleur">✦</span>
+    <span class="fleur">❦</span>
+  </div>
+
+  <!-- Cadre principal -->
+  <div class="seuil">
+
+    <!-- Marque -->
+    <div class="marque">
+      <span class="v">SWEET</span>
+      <span class="amp">&amp;</span>
+      <span class="p">SIP</span>
+    </div>
+    <div class="regle"><span class="l"></span><span class="d"></span><span class="l"></span></div>
+    <div class="sous-titre">Les 4 Saisons Sucrées</div>
+
+    <!-- Vers d'introduction -->
+    <p class="vers">
+      Il était une fois <em>deux sentiers</em><br>
+      dans un même verger.<br>
+      <span class="mot">L'un</span> sentait la fraise et le sucre d'autrefois.<br>
+      <span class="mot">L'autre</span>, plus mystérieux, promettait<br>
+      des merveilles jamais goûtées.
+    </p>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- ✦ LA BARRE DE RECHERCHE ORNEMENTALE ✦ -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="quete" id="quete">
+      <div class="quete-legende">
+        <span class="trait"></span>
+        <span class="fleuronne">✦ CHERCHEZ-VOUS UN DESSERT ? ✦</span>
+        <span class="trait"></span>
+      </div>
+
+      <div class="quete-cadre">
+        <div class="quete-champ">
+          <span class="quete-cle" aria-hidden="true">❦</span>
+          <input type="search"
+                 id="q"
+                 placeholder="Chocolat, fraise, pistache, yuzu…"
+                 autocomplete="off"
+                 aria-label="Rechercher un dessert">
+          <span class="quete-fin">
+            <span class="quete-compteur" id="quete-compteur"></span>
+            <button class="quete-effacer" id="quete-effacer" type="button" aria-label="Effacer la recherche">✕</button>
+          </span>
+        </div>
+        <span class="quete-poussiere" id="quete-poussiere"></span>
+      </div>
+
+      <div class="quete-resultats" id="quete-resultats"></div>
+    </div>
+
+    <!-- Ornement de séparation -->
+    <div class="ou-bien">
+      <span class="trait"></span>
+      <span class="fleuronne">— ou bien —</span>
+      <span class="trait"></span>
+    </div>
+
+    <!-- Les deux portes -->
+    <div class="portes">
+
+      <a class="porte porte-1" href="sucre1/index.html" aria-label="Entrer dans Le Verger">
+        <span class="porte-embleme">🍓</span>
+        <span class="porte-corps">
+          <span class="porte-nom">Le Verger</span>
+          <span class="porte-trait"></span>
+          <span class="porte-desc">Saint-Honoré, îles flottantes, babas, soufflés, bûches — les grands classiques de la pâtisserie française, revisités avec précision.</span>
+          <span class="porte-meta">
+            <span class="porte-badge">36 desserts</span>
+            <span class="porte-badge">Tradition</span>
+          </span>
+          <span class="porte-invite">Poussez la porte</span>
+        </span>
+      </a>
+
+      <a class="porte porte-2" href="sucre2/index.html" aria-label="Entrer dans L'Atelier">
+        <span class="porte-embleme">🌿</span>
+        <span class="porte-corps">
+          <span class="porte-nom">L'Atelier</span>
+          <span class="porte-trait"></span>
+          <span class="porte-desc">Cheesecakes, dômes, pavés, millefeuilles — des créations modernes aux associations inattendues.</span>
+          <span class="porte-meta">
+            <span class="porte-badge">36 desserts</span>
+            <span class="porte-badge">Contemporain</span>
+          </span>
+          <span class="porte-invite">Poussez la porte</span>
+        </span>
+      </a>
+
+    </div>
+
+    <!-- Signature -->
+    <div class="signature">
+      Choisissez votre sentier, puis refermez la porte derrière vous.
+      <span class="fleur-finale">✦</span>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     INDEX DES 72 DESSERTS — pour la recherche
+     ═══════════════════════════════════════════════════════ -->
+<script>
+(function(){
+  'use strict';
+
+  /* ─────────────────────────────────────────
+     Index des desserts des deux univers
+     ───────────────────────────────────────── */
+  const INDEX = {
+    verger: {
+      nom: "Le Verger",
+      emoji: "🍓",
+      url: "sucre1/index.html",
+      cls: "verger",
+      duos: [
+        // Printemps
+        {id:"p1", saison:"Printemps", nom:"Saint-Honoré aux Fraises, Crème Chiboust Vanille"},
+        {id:"p2", saison:"Printemps", nom:"Panna Cotta à la Fleur d'Oranger"},
+        {id:"p3", saison:"Printemps", nom:"Paris-Brest au Praliné Noisette et Cerises Pochées"},
+        {id:"p4", saison:"Printemps", nom:"Charlotte aux Fraises et Verveine"},
+        {id:"p5", saison:"Printemps", nom:"Sorbet Rhubarbe-Framboise"},
+        {id:"p6", saison:"Printemps", nom:"Mousse au Chocolat Blanc et Rose"},
+        {id:"p7", saison:"Printemps", nom:"Crème Brûlée à la Lavande"},
+        {id:"p8", saison:"Printemps", nom:"Financiers aux Amandes et Eau de Rose"},
+        {id:"p9", saison:"Printemps", nom:"Vacherin aux Fruits Rouges"},
+        // Été
+        {id:"e10", saison:"Été", nom:"Pêche Melba Revisitée à la Verveine"},
+        {id:"e11", saison:"Été", nom:"Pavlova aux Fruits Rouges"},
+        {id:"e12", saison:"Été", nom:"Île Flottante au Caramel Beurre Salé et Praliné Rose"},
+        {id:"e13", saison:"Été", nom:"Sablé Breton aux Abricots Rôtis et Crème Légère à l'Amande"},
+        {id:"e14", saison:"Été", nom:"Tiramisu aux Pêches et Basilic"},
+        {id:"e15", saison:"Été", nom:"Nougat Glacé au Miel de Lavande, Coulis de Framboises"},
+        {id:"e16", saison:"Été", nom:"Tartelettes aux Myrtilles et Citron"},
+        {id:"e17", saison:"Été", nom:"Panna Cotta Coco-Mangue"},
+        {id:"e18", saison:"Été", nom:"Baba au Rhum Ambré, Agrumes et Chantilly Vanille"},
+        // Automne
+        {id:"a19", saison:"Automne", nom:"Gâteau Basque à la Cerise Noire"},
+                {id:"a20", saison:"Automne", nom:"Flan Parisien à la Vanille Bourbon"},
+        {id:"a21", saison:"Automne", nom:"Fondant au Chocolat et Poire"},
+        {id:"a22", saison:"Automne", nom:"Charlotte Brioche aux Pommes Reinettes et Caramel"},
+        {id:"a23", saison:"Automne", nom:"Cheesecake Potiron-Épices"},
+        {id:"a24", saison:"Automne", nom:"Tarte aux Noix de Pécan"},
+        {id:"a25", saison:"Automne", nom:"Clafoutis aux Figues et Miel"},
+        {id:"a26", saison:"Automne", nom:"Mousse au Chocolat Noir et Fleur de Sel"},
+        {id:"a27", saison:"Automne", nom:"Opéra Café-Noisette"},
+        // Hiver
+        {id:"h28", saison:"Hiver", nom:"Bûche Chocolat-Praliné"},
+        {id:"h29", saison:"Hiver", nom:"Crêpes Suzette au Beurre d'Orange"},
+        {id:"h30", saison:"Hiver", nom:"Mont-Blanc aux Marrons"},
+        {id:"h31", saison:"Hiver", nom:"Tarte au Chocolat et à l'Orange"},
+        {id:"h32", saison:"Hiver", nom:"Kouign-Amann au Beurre Demi-Sel et Pommes Rôties"},
+        {id:"h33", saison:"Hiver", nom:"Riz au Lait à la Vanille"},
+        {id:"h34", saison:"Hiver", nom:"Soufflé Chaud au Chocolat Noir, Crème Anglaise Vanillée"},
+        {id:"h35", saison:"Hiver", nom:"Orangettes et Mendiants au Chocolat Grand Cru"},
+        {id:"h36", saison:"Hiver", nom:"Galette des Rois à la Frangipane"}
+      ]
+    },
+    atelier: {
+      nom: "L'Atelier",
+      emoji: "🌿",
+      url: "sucre2/index.html",
+      cls: "atelier",
+      duos: [
+        // Printemps
+        {id:"p1", saison:"Printemps", nom:"Cheesecake Fraise & Basilic Pourpre"},
+        {id:"p2", saison:"Printemps", nom:"Financier Citron & Huile d'Olive"},
+        {id:"p3", saison:"Printemps", nom:"Dôme Clémentine, Amande & Fleur d'Oranger"},
+        {id:"p4", saison:"Printemps", nom:"Tarte Fine Poire, Noisette & Sarrasin Caramel"},
+        {id:"p5", saison:"Printemps", nom:"Tartelette Fraise & Sésame Grillé"},
+        {id:"p6", saison:"Printemps", nom:"Panna Cotta Citronnelle & Fruits Rouges"},
+        {id:"p7", saison:"Printemps", nom:"Sorbet Fraise-Basilic"},
+        {id:"p8", saison:"Printemps", nom:"Verrine Pistache & Framboise"},
+        {id:"p9", saison:"Printemps", nom:"Clafoutis Cerises & Amandes"},
+        // Été
+        {id:"e10", saison:"Été", nom:"Pavé Melon, Citron Vert & Poivre Timut"},
+        {id:"e11", saison:"Été", nom:"Millefeuille Caramélisé Patate Douce & Vanille"},
+        {id:"e12", saison:"Été", nom:"Tarte aux Pêches & Pistaches Grillées"},
+        {id:"e13", saison:"Été", nom:"Sorbet Melon & Citronnelle"},
+        {id:"e14", saison:"Été", nom:"Tarte Citron Meringuée au Sésame Noir"},
+        {id:"e15", saison:"Été", nom:"Mangue Rôtie, Sabayon Matcha & Sésame Caramélisé"},
+        {id:"e16", saison:"Été", nom:"Clafoutis Abricots & Romarin"},
+        {id:"e17", saison:"Été", nom:"Glace Vanille & Pistaches Grillées"},
+        {id:"e18", saison:"Été", nom:"Granité Yuzu-Gingembre & Chantilly Sésame Blanc"},
+        // Automne
+        {id:"a19", saison:"Automne", nom:"Tatin Pomme, Fenouil & Caramel"},
+        {id:"a20", saison:"Automne", nom:"Éclair Potimarron, Pécan & Épices Douces"},
+        {id:"a21", saison:"Automne", nom:"Moelleux Châtaigne & Poire"},
+        {id:"a22", saison:"Automne", nom:"Tartelette Kaki, Vanille & Sésame Noir"},
+        {id:"a23", saison:"Automne", nom:"Crumble Pommes & Noisettes"},
+        {id:"a24", saison:"Automne", nom:"Patate Douce Blanche, Vanille Noire & Croustillant de Sarrasin"},
+        {id:"a25", saison:"Automne", nom:"Cheesecake Yuzu, Coulis Gingembre & Biscuit Sarrasin"},
+        {id:"a26", saison:"Automne", nom:"Fondant Chocolat & Châtaigne"},
+        {id:"a27", saison:"Automne", nom:"Tarte Cacao, Poire Williams & Noix Caramélisées"},
+        // Hiver
+        {id:"h28", saison:"Hiver", nom:"Millefeuille Chocolat Noir & Thé Earl Grey"},
+        {id:"h29", saison:"Hiver", nom:"Zuccotto"},
+        {id:"h30", saison:"Hiver", nom:"Bûche Chocolat & Clémentine"},
+        {id:"h31", saison:"Hiver", nom:"Crème Brûlée Vanille & Matcha"},
+        {id:"h32", saison:"Hiver", nom:"Truffes Chocolat & Pistaches Grillées"},
+        {id:"h33", saison:"Hiver", nom:"Couronne Briochée Pistache & Framboise Confite"},
+        {id:"h34", saison:"Hiver", nom:"Pain d'Épices & Citronnelle"},
+        {id:"h35", saison:"Hiver", nom:"Crème Brûlée Yuzu, Sucre au Gingembre Frais & Pignons Caramélisés"},
+        {id:"h36", saison:"Hiver", nom:"Soufflé au Grand Marnier & Sésame Grillé"}
+      ]
+    }
+  };
+
+  /* Aplatir l'index en une seule liste, avec univers attaché */
+  const FLAT = [];
+  Object.keys(INDEX).forEach(function(u){
+    INDEX[u].duos.forEach(function(d){
+      FLAT.push({
+        id: d.id,
+        nom: d.nom,
+        saison: d.saison,
+        univers: u,
+        univ: INDEX[u]
+      });
+    });
+  });
+
+  /* ─────────────────────────────────────────
+     Normalisation (accents, casse)
+     ───────────────────────────────────────── */
+  function norm(s){
+    return String(s)
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/œ/g, 'oe')
+      .toLowerCase();
+  }
+
+  /* ─────────────────────────────────────────
+     Éléments du DOM
+     ───────────────────────────────────────── */
+  const quete = document.getElementById('quete');
+  const input = document.getElementById('q');
+  const resultatsEl = document.getElementById('quete-resultats');
+  const compteurEl = document.getElementById('quete-compteur');
+  const effacerBtn = document.getElementById('quete-effacer');
+  const poussiereEl = document.getElementById('quete-poussiere');
+
+  if(!quete || !input) return;
+
+  /* Éviter le double rendu si le patch est collé deux fois */
+  if(quete.dataset.init === '1') return;
+  quete.dataset.init = '1';
+
+  /* ─────────────────────────────────────────
+     Petite poussière dorée au focus
+     ───────────────────────────────────────── */
+  function lancerPoussiere(){
+    if(!poussiereEl) return;
+    poussiereEl.innerHTML = '';
+    for(let i = 0; i < 6; i++){
+      const s = document.createElement('span');
+      s.textContent = i % 2 === 0 ? '✦' : '✧';
+      const angle = (Math.PI * 2 * i) / 6 + Math.random() * 0.4;
+      const dist = 30 + Math.random() * 30;
+      s.style.setProperty('--dx', Math.cos(angle) * dist + 'px');
+      s.style.setProperty('--dy', Math.sin(angle) * dist + 'px');
+      s.style.animationDelay = (i * 0.04) + 's';
+      poussiereEl.appendChild(s);
+    }
+  }
+
+  /* ─────────────────────────────────────────
+     Rendu des résultats
+     ───────────────────────────────────────── */
+  function echapper(s){
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){
+      return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c];
+    });
+  }
+
+  function afficherResultats(liste){
+    if(!liste.length){
+      resultatsEl.innerHTML =
+        '<div class="quete-vide">' +
+          '<span class="fleuronne">✦ ✦ ✦</span>' +
+          'Aucun dessert ne répond à votre appel.<br>' +
+          'Essayez un autre mot, ou poussez l\'une des deux portes.' +
+        '</div>';
+      resultatsEl.classList.add('ouvert');
+      return;
+    }
+
+    const html = liste.slice(0, 12).map(function(d, i){
+      const url = d.univ.url + '#duo-' + d.id;
+      return (
+        '<a class="resultat ' + d.univ.cls + '" href="' + url + '" ' +
+           'style="animation-delay:' + (i * 0.03) + 's">' +
+          '<span class="resultat-embleme">' + d.univ.emoji + '</span>' +
+          '<span class="resultat-corps">' +
+            '<span class="resultat-nom">' + echapper(d.nom) + '</span>' +
+            '<span class="resultat-meta">' + echapper(d.univ.nom) + ' · ' + echapper(d.saison) + '</span>' +
+          '</span>' +
+          '<span class="resultat-fleche">→</span>' +
+        '</a>'
+      );
+    }).join('');
+
+    resultatsEl.innerHTML = html;
+    resultatsEl.classList.add('ouvert');
+  }
+
+  /* ─────────────────────────────────────────
+     Recherche
+     ───────────────────────────────────────── */
+  function chercher(q){
+    const requete = norm(q).trim();
+
+    /* Mise à jour du cadre */
+    if(requete.length === 0){
+      quete.classList.remove('ouvert', 'rempli');
+      resultatsEl.classList.remove('ouvert');
+      resultatsEl.innerHTML = '';
+      if(compteurEl) compteurEl.textContent = '';
+      return;
+    }
+
+    quete.classList.add('ouvert', 'rempli');
+
+    /* Découper en termes ; normaliser les pluriels basiques */
+    const termes = requete.split(/\s+/).filter(Boolean).map(function(t){
+      return t.length > 3 ? t.replace(/s$/, '') : t;
+    });
+
+    /* Filtre */
+    const hits = FLAT.filter(function(d){
+      const texte = norm(d.nom + ' ' + d.saison + ' ' + d.univ.nom);
+      return termes.every(function(t){ return texte.indexOf(t) !== -1; });
+    });
+
+    /* Compteur */
+    if(compteurEl){
+      compteurEl.textContent = hits.length === 0
+        ? 'aucun'
+        : (hits.length + (hits.length > 1 ? ' trouvés' : ' trouvé'));
+    }
+
+    afficherResultats(hits);
+  }
+
+  /* ─────────────────────────────────────────
+     Événements
+     ───────────────────────────────────────── */
+  let poussiereDejaLancee = false;
+  input.addEventListener('focus', function(){
+    if(!poussiereDejaLancee){
+      lancerPoussiere();
+      poussiereDejaLancee = true;
+      setTimeout(function(){ poussiereDejaLancee = false; }, 2000);
+    }
+    quete.classList.add('ouvert');
+  });
+
+  input.addEventListener('blur', function(){
+    /* Ne pas fermer si on est en train de taper */
+    if(input.value.trim() === ''){
+      setTimeout(function(){
+        quete.classList.remove('ouvert');
+      }, 150);
+    }
+  });
+
+  input.addEventListener('input', function(){
+    chercher(input.value);
+  });
+
+  input.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      input.value = '';
+      chercher('');
+      input.blur();
+    }
+  });
+
+  if(effacerBtn){
+    effacerBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      input.value = '';
+      chercher('');
+      input.focus();
+    });
+  }
+
+  /* Fermer la recherche en cliquant ailleurs (sans contenu) */
+  document.addEventListener('click', function(e){
+    if(!quete.contains(e.target) && input.value.trim() === ''){
+      quete.classList.remove('ouvert');
+    }
+  });
+})();
+</script>
+<!-- ═══════════════════════════════════════════════════════
+     PATCH LEWIS CARROLL — Ambiance Wonderland
+     ═══════════════════════════════════════════════════════ -->
+
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&display=swap">
+
+<style>
+/* ═══ Palette étendue ═══ */
+:root{
+  --wc-ink:        #0F0A07;   /* encre Tenniel */
+  --wc-queen:      #8B0A1A;   /* rouge Reine de Cœur */
+  --wc-drinkme:    #3B9BA8;   /* bleu du verre "Drink Me" */
+  --wc-cheshire:   #8E44AD;   /* violet du Chat */
+  --wc-watch:      #C9A961;   /* or de la montre */
+  --line:          #DCC8A8;   /* papier ancien plus chaud */
+}
+
+/* ═══ Typographie victorienne ═══ */
+.hero,
+.menus-hero .mh-title,
+.tech-hero .th-title,
+.detail-hero .dth-title,
+.log-entry-title{
+  font-family:'Cinzel',serif;
+  font-weight:600;
+  letter-spacing:.04em;
+}
+
+/* Lettrines (drop caps) sur les intros de saison, menus, à propos */
+.season-header .sh-intro::first-letter,
+.menu-intro::first-letter,
+.about-text p:first-child::first-letter{
+  font-family:'Cinzel',serif;
+  font-weight:700;
+  font-size:3.2em;
+  float:left;
+  line-height:.85;
+  margin:6px 10px 0 0;
+  color:var(--wc-queen);
+}
+
+/* ═══ "Drink Me" / "Eat Me" — via pseudo-éléments ═══ */
+#btn-cart::after{
+  content:" · mange-moi";
+  font-family:'IM Fell English SC',serif;
+  font-size:9.5px;
+  letter-spacing:.18em;
+  color:var(--wc-queen);
+  margin-left:4px;
+}
+#btn-fav::after{
+  content:" · rose peinte";
+  font-family:'IM Fell English SC',serif;
+  font-size:9.5px;
+  letter-spacing:.18em;
+  color:var(--wc-queen);
+  margin-left:4px;
+}
+.recipe-card[data-recipe="boisson"] .rc-tag::after{
+  content:" · bois-moi";
+  font-family:'IM Fell English SC',serif;
+  font-size:8.5px;
+  letter-spacing:.2em;
+  color:var(--wc-drinkme);
+  margin-left:6px;
+}
+
+/* ═══ Séparateur à cartes ═══ */
+.wc-divider{
+  display:flex;align-items:center;justify-content:center;
+  gap:14px;margin:26px 0;font-size:15px;opacity:.6
+}
+.wc-divider::before,.wc-divider::after{
+  content:"";height:1px;flex:1;max-width:80px;
+  background:linear-gradient(90deg,transparent,var(--wc-ink),transparent)
+}
+.wc-divider .s-heart{color:var(--wc-queen)}
+.wc-divider .s-spade,.wc-divider .s-club{color:var(--wc-ink)}
+.wc-divider .s-diamond{color:var(--wc-queen)}
+
+/* ═══ Cartes de saison légèrement inclinées ═══ */
+.season-card{
+  transform-origin:center;
+  transition:transform .4s cubic-bezier(.2,.7,.3,1),box-shadow .3s
+}
+.season-card:nth-child(odd){transform:rotate(-.55deg)}
+.season-card:nth-child(even){transform:rotate(.55deg)}
+.season-card:hover{
+  transform:rotate(0) translateY(-3px);
+  box-shadow:0 14px 34px rgba(15,10,7,.14)
+}
+
+/* ═══ Ornement de carte à jouer sur les cards recette ═══ */
+.recipe-card::after{
+  content:"";
+  position:absolute;inset:5px;
+  border:1px solid rgba(176,141,87,.22);
+  border-radius:10px;pointer-events:none
+}
+
+/* ═══ Montre qui tourne à l'envers ═══ */
+.wc-watch{
+  display:inline-block;font-size:15px;color:var(--wc-watch);
+  animation:wc-tick 6s linear infinite;
+  transform-origin:center;vertical-align:middle;margin-left:8px
+}
+@keyframes wc-tick{from{transform:rotate(0)}to{transform:rotate(-360deg)}}
+
+/* ═══ Chat du Cheshire — apparaît par intermittence ═══ */
+.wc-cheshire{
+  position:fixed;font-size:34px;opacity:0;pointer-events:none;z-index:0;
+  animation:wc-cheshire 26s ease-in-out infinite;
+  filter:blur(.4px)
+}
+@keyframes wc-cheshire{
+  0%,86%   {opacity:0;transform:translateY(10px) scale(.9)}
+  89%      {opacity:.28;transform:translateY(0) scale(1)}
+  93%      {opacity:.45}
+  96%      {opacity:.18}
+  100%     {opacity:0;transform:translateY(-8px) scale(1.05)}
+}
+
+/* ═══ Texte en miroir ═══ */
+.wc-mirror{
+  display:inline-block;transform:scaleX(-1);
+  font-family:'IM Fell English',serif;font-style:italic;
+  opacity:.55;letter-spacing:.02em
+}
+
+/* ═══ Petit "scintillement" périodique du brand ═══ */
+.brand{transition:opacity .22s ease}
+.brand.wc-flicker{opacity:.72}
+</style>
+
+<script>
+(function(){
+'use strict';
+console.log('🟢 Patch Lewis Carroll : démarrage');
+
+/* ── 1. Séparateur à cartes sur l'accueil, après le titre ── */
+function injectCardDivider(){
+  var home = document.getElementById('screen-home');
+  if(!home || home.querySelector('.wc-divider')) return;
+  var hero = home.querySelector('.hero');
+  if(!hero) return;
+  var d = document.createElement('div');
+  d.className = 'wc-divider';
+  d.innerHTML =
+    '<span class="s-heart">♥</span>' +
+    '<span class="s-spade">♠</span>' +
+    '<span class="s-diamond">♦</span>' +
+    '<span class="s-club">♣</span>';
+  hero.parentNode.insertBefore(d, hero.nextSibling);
+}
+setInterval(injectCardDivider, 700);
+
+/* ── 2. Montre qui tourne à l'envers à côté du titre ── */
+function injectWatch(){
+  var home = document.getElementById('screen-home');
+  if(!home) return;
+  var hero = home.querySelector('.hero');
+  if(!hero || hero.querySelector('.wc-watch')) return;
+  var w = document.createElement('span');
+  w.className = 'wc-watch';
+  w.textContent = '⌚';
+  hero.appendChild(w);
+}
+setInterval(injectWatch, 900);
+
+/* ── 3. Chat du Cheshire qui passe ── */
+function injectCheshire(){
+  if(document.querySelector('.wc-cheshire')) return;
+  var spots = [
+    {t:'16%', l:'5%',  delay:0},
+    {t:'34%', r:'6%',  delay:6},
+    {t:'66%', l:'8%',  delay:12},
+    {t:'80%', r:'9%',  delay:18}
+  ];
+  spots.forEach(function(s){
+    var e = document.createElement('span');
+    e.className = 'wc-cheshire';
+    e.textContent = '😺';
+    if(s.t) e.style.top = s.t;
+    if(s.l) e.style.left = s.l;
+    if(s.r) e.style.right = s.r;
+    e.style.animationDelay = s.delay + 's';
+    document.body.appendChild(e);
+  });
+}
+injectCheshire();
+
+/* ── 4. Scintillement rare du brand (comme le Cheshire) ── */
+function brandFlicker(){
+  var b = document.querySelector('.brand');
+  if(!b) return;
+  setInterval(function(){
+    if(Math.random() < .12){
+      b.classList.add('wc-flicker');
+      setTimeout(function(){ b.classList.remove('wc-flicker'); }, 90);
+      setTimeout(function(){
+        b.classList.add('wc-flicker');
+        setTimeout(function(){ b.classList.remove('wc-flicker'); }, 70);
+      }, 180);
+    }
+  }, 5000);
+}
+brandFlicker();
+
+/* ── 5. Ligne en miroir dans "À propos" ── */
+var _renderAbout = window.renderAbout;
+if(typeof _renderAbout === 'function'){
+  window.renderAbout = function(){
+    _renderAbout.apply(this, arguments);
+    var scr = document.getElementById('screen-about');
+    if(!scr || scr.querySelector('.wc-mirror-line')) return;
+    var p = document.createElement('p');
+    p.className = 'wc-mirror-line';
+    p.style.cssText = 'text-align:center;margin-top:26px;line-height:1.9';
+    p.innerHTML =
+      p.innerHTML =
+  '<span class="wc-mirror">Suivez le lapin blanc</span><br>' +
+      '<span style="font-size:10px;letter-spacing:.24em;color:var(--ink-soft);text-transform:uppercase">' +
+      '— relisez dans le miroir —</span>';
+    var at = scr.querySelector('.about-text');
+    if(at && at.parentNode) at.parentNode.insertBefore(p, at.nextSibling);
+  };
+}
+
+/* ── 6. Microcopy carrollien ── */
+var WC_MICROCOPY = [
+  // [recherche, remplacement]
+  ['Choisis ta saison,',     'De quel côté du miroir ?'],
+  ['Ma liste de courses',    'Ce que dit le Lapin Blanc'],
+  ['Mon carnet',             'Carnet de la Chenille'],
+  ['Favoris',                'Roses préférées'],
+  ['Réalisés',               'Déjà goûtés'],
+  ['À propos',               'À propos de ce rêve'],
+  ['Aucun favori encore.',   'Nous sommes tous fous ici. ♠'],
+  ['Aucun dessert ne correspond.','Aucun sentier ne mène là.'],
+  ['Ta liste est vide.',     'Le chapeau est vide.'],
+  ['Tout vider',             'Renverser la théière']
+];
+function replaceMicrocopy(root){
+  var w = document.createTreeWalker(root || document.body,
+    NodeFilter.SHOW_TEXT, null);
+  var n;
+  while((n = w.nextNode())){
+    var t = n.nodeValue;
+    if(!t) continue;
+    var changed = false;
+    for(var i = 0; i < WC_MICROCOPY.length; i++){
+      var from = WC_MICROCOPY[i][0];
+      if(t.indexOf(from) !== -1){
+        t = t.replace(from, WC_MICROCOPY[i][1]);
+        changed = true;
+      }
+    }
+    if(changed) n.nodeValue = t;
+  }
+}
+var _go = window.go;
+if(typeof _go === 'function'){
+  window.go = function(){
+    var r = _go.apply(this, arguments);
+    setTimeout(function(){ replaceMicrocopy(); }, 40);
+    return r;
+  };
+}
+// premier passage au chargement
+setTimeout(replaceMicrocopy, 600);
+
+console.log('✅ Patch Lewis Carroll armé');
+})();
+</script>
+<!-- Service Worker -->
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('../sw.js', { scope: '../' })
+      .then(function(r){ console.log('SW enregistré :', r.scope); })
+      .catch(function(e){ console.log('SW erreur :', e); });
+  });
+}
+</script>
+</body>
+
+</html>
