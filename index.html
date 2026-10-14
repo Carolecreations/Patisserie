@@ -1549,9 +1549,9 @@ console.log('✅ Patch Lewis Carroll armé');
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function(){
-    navigator.serviceWorker.register('../sw.js', { scope: '../' })
-      .then(function(r){ console.log('SW enregistré :', r.scope); })
-      .catch(function(e){ console.log('SW erreur :', e); });
+    navigator.serviceWorker.register('/Patisserie/sw.js', { scope: '/Patisserie/' })
+      .then(function(r){ console.log('✅ SW enregistré :', r.scope); })
+      .catch(function(e){ console.log('❌ SW erreur :', e); });
   });
 }
 </script>
